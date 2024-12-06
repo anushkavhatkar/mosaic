@@ -43,6 +43,8 @@ const relationships = [
     { id: 29, name: "Sarah", type: "Family", intensity: 0.55, memory: "The wrong people might leave the party, but the right people will join the dance" },
     { id: 30, name: "Zahra", type: "Friendship", intensity: 0.15, memory: "Location spoofing" },
     { id: 31, name: "Zahra", type: "Friendship", intensity: 0.25, memory: "The most no-nonsense advice" },
+    { id: 32, name: "Mom", type: "Family", intensity: .5, memory: "How to be fiercely independent" },
+    { id: 33, name: "Mom", type: "Family", intensity: .4, memory: "Life never gives you anything you can't handle" },
 
 ].map(rel => ({
     ...rel,
@@ -99,7 +101,8 @@ function updateVisualization(filteredData) {
                 d3.select(this)
                     .classed("active", false)
                     .classed("pulsing", true)
-                    .style("stroke", "none");
+                    // .style("stroke", "none");
+                    .style("filter", "blur(0px)"); // Remove blur
                 tooltip.transition()
                     .duration(1500)
                     .style("opacity", 0);
@@ -108,18 +111,23 @@ function updateVisualization(filteredData) {
             }
 
             if (activeCircle) {
+                // Reset previous active circle
                 d3.select(activeCircle)
                     .classed("active", false)
                     .classed("pulsing", true)
-                    .style("stroke", "none");
+                    // .style("stroke", "none");
+
+                    .style("filter", "blur(0px)"); // Remove blur
             }
 
             activeCircle = this;
             d3.select(this)
                 .classed("active", true)
                 .classed("pulsing", false)
-                .style("stroke", "#fff")
-                .style("stroke-width", "4px");
+                // .style("stroke", "#fff")
+                // .style("stroke-width", "4px");
+
+                .style("filter", "blur(1px)"); // APPLY BLUR
 
             tooltip.transition()
                 .duration(1500)
@@ -127,8 +135,8 @@ function updateVisualization(filteredData) {
             
                 // TOOLTIPS DISPLAY
             tooltip.html(`
-                <strong>${d.name}</strong><br/>
-                ${d.memory}
+                <div class="tooltip-bold">${d.name}</div>
+                <div class="tooltip-reg">${d.memory}</div>
             `)
                 .style("left", (event.pageX + 15) + "px")
                 .style("top", (event.pageY - 40) + "px");

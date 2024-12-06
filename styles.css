@@ -1,3 +1,30 @@
+:root {
+    --1re: 8px;
+}
+
+
+/* FONTS */
+
+@font-face {
+    font-family: bian;
+    src: url(/fonts/bianzhidai_noBG-Base.woff);
+  }
+
+@font-face {
+    font-family: feature-light;
+    src: url(/fonts/FeatureDeck-Light-Trial.otf);
+}
+
+@font-face {
+    font-family: feature-text-reg;
+    src: url(/fonts/FeatureText-Regular-Trial.otf);
+}
+
+@font-face {
+    font-family: feature-text-bold;
+    src: url(/fonts/FeatureText-Bold-Trial.otf);
+}
+
 /* STYLING FOR HOMEPAGE */
 .button {
     border-color: black;
@@ -11,6 +38,9 @@
 /* body {
     background-color: cyan;
 } */
+
+
+
 
 body, html {
     margin: 0;
@@ -26,26 +56,29 @@ body, html {
     font-family: Arial, sans-serif;
     width: 100vw;
     height: 100vh;
-    margin: 0;
-    padding: 20px;
+    margin: -44px;
+    /* padding: 16px; */
     box-sizing: border-box;
 }
 .filters {
     margin-bottom: 20px;
     display: flex;
-    gap: 10px;
+    gap: 8px;
     justify-content: center;
 }
 .filter-btn {
     padding: 8px 16px;
     border: none;
-    border-radius: 4px;
+    border-radius: 12px;
     background-color: #e0e0e0;
     cursor: pointer;
     transition: all 1.2s ease;
+
+    font-family: feature-light;
+    
 }
 .filter-btn.active {
-    background-color: #4ECDC4;
+    background-color: #0580E4;
     color: white;
 }
 .mosaic-tile {
@@ -53,22 +86,34 @@ body, html {
     cursor: pointer;
 }
 .mosaic-tile.active {
-    transform: scale(2);
+    /* transform: scale(2); */
     filter: brightness(1.1);
     z-index: 1000;
 }
 .tooltip {
     position: fixed;
     padding: 12px;
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    font-family: Arial, sans-serif;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 0px 12px 12px 12px;
+    /* box-shadow: 0 4px 12px rgba(0,0,0,0.15); */
+
     pointer-events: none;
-    opacity: 0;
-    transition: all 1.5s ease;
+    opacity: 100%;
+    transition: all .75s ease;
     z-index: 1001;
+    
+    font-family: feature-text-reg;
+
 }
+
+.tooltip-bold {
+    font-family: feature-text-bold;
+}
+
+.tooltip-reg  {
+    font-family: feature-text-reg;
+}
+
 @keyframes gentlePulse {
     0% { 
         transform: scale(1); 
@@ -97,4 +142,13 @@ body, html {
 }
 .pulsing:nth-child(5n) {
     animation-delay: -1s;
+}
+
+
+.title {
+    font-family: bian;
+    font-size: calc(var(--1re) * 3);
+    padding: calc(var(--1re) * 2);
+
+
 }
