@@ -163,3 +163,7 @@ document.querySelectorAll('.filter-btn').forEach(button => {
         updateVisualization(filteredData);
     });
 });
+
+if (!d3) {
+    console.error('D3.js failed to load');
+}
