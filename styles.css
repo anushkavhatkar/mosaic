@@ -1,0 +1,13 @@
+/* STYLING FOR HOMEPAGE */
+.button {
+    border-color: black;
+    border-radius: 8px;
+    padding: 8px;
+    border-style: solid;
+}
+
+
+/* STYLING FOR VISUALISATION */
+body {
+    background-color: cyan;
+}
