@@ -51,6 +51,18 @@ const relationships = [
     color: colorPalette[Math.floor(Math.random() * colorPalette.length)]
 }));
 
+
+document.addEventListener('DOMContentLoaded', () => {
+    const ctaButton = document.querySelector('.cta-btn');
+    ctaButton.addEventListener('click', (e) => {
+      e.preventDefault(); // Prevent immediate navigation
+      document.body.classList.add('fade-out');
+      setTimeout(() => {
+        window.location.href = 'mosaic.html';
+      }, 800); // Match this with your transition duration
+    });
+  });
+
 // Make width and height responsive to viewport
 const width = window.innerWidth;
 const height = window.innerHeight - 100; // Subtract some space for filters
